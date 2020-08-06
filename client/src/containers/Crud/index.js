@@ -36,7 +36,7 @@ const DELETE_TODO = gql`
   }
 `
 
-const PageTwo = () => {
+const Crud = () => {
   const [todoValue, setTodoValue] = useState('')
   const [isUpdateMode, setUpdateMode] = useState(false)
   const [editingTodoId, setEditingTodoId] = useState('')
@@ -106,4 +106,4 @@ const PageTwo = () => {
   )
 }
 
-export default PageTwo
+export default Crud
