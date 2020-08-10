@@ -1,12 +1,20 @@
-const express = require('express')
-const { ApolloServer } = require('apollo-server-express')
-const cors = require('cors')
+const { ApolloServer, PubSub } = require('apollo-server')
 
 const typeDefs = require ('./schema');
 
 let todos = []
 
+const pubsub = new PubSub()
+
+const TODO_ADDED = 'TODO_ADDED'
+
 const resolvers = {
+  Subscription: {
+    todoAdded: {
+      subscribe: () => pubsub.asyncIterator([TODO_ADDED])
+    }
+  },
+
   Query: {
     todos: () => todos,
   },
@@ -18,7 +26,13 @@ const resolvers = {
         text: args.text,
         completed: false,
       }
+
       todos.push(newTodo)
+
+      pubsub.publish(TODO_ADDED, {
+        todoAdded: newTodo
+      })
+
       return newTodo
     },
 
@@ -34,15 +48,24 @@ const resolvers = {
       return todo
     }
   }
-};
+}
 
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  context: ({ req, res }) => ({ req, res, pubsub}),
+  subscriptions: {
+    onConnect: (connectionParams, websocket, context) => {
+      console.log('Client connected')
+    },
+    onDisconnect: (websocket, context) => {
+      console.log('Client disconnected')
+    }
+  },
+})
 
-const app = express();
-server.applyMiddleware({ app });
+server.listen().then(({ url, subscriptionsUrl }) => {
+  console.log(`server runs at ${url}`)
+  console.log(`server runs at ${subscriptionsUrl}`)
+})
 
-app.use(cors());
-
-app.listen({ port: 4000 }, () =>
-  console.log('Now browse to http://localhost:4000' + server.graphqlPath)
-);

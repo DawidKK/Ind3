@@ -6,9 +6,15 @@ const typeDefs = gql`
     text: String
     completed: Boolean
   }
+
+  type Subscription {
+    todoAdded: Todo
+  }
+
   type Query {
     todos: [Todo]!
   }
+
   type Mutation {
     createTodo(text: String!): Todo!
     deleteTodo(id: String!): String

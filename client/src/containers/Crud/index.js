@@ -3,6 +3,7 @@ import { useQuery, useMutation } from '@apollo/react-hooks';
 import gql from "graphql-tag";
 
 import Form from '../../components/Form'
+import Notification from '../../components/Notification'
 
 const READ_TODOS = gql`
   query todos{
@@ -102,6 +103,7 @@ const Crud = () => {
           </li>
         )}
       </ul>
+      <Notification />
     </div>
   )
 }
