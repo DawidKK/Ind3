@@ -24,13 +24,13 @@ const Notification = () => {
   }
 
   if (error) return <p>error</p>
-  if (loading) return <p>Waiting for add todo - I will notice it 👀</p>
+  if (loading) return <p>Waiting for new todo - I will notice it 👀</p>
 
   return (
     <>
       {showNotification ? (
         <div>
-          <p>New task added!</p>
+          <p>New task added! 🎉</p>
           <p>Remember about: {data.todoAdded.text}</p>
           <iframe src="https://giphy.com/embed/cbb8zL5wbNnfq" width="300" height="300" frameBorder="0"></iframe>
         </div>
