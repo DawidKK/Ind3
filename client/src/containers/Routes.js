@@ -1,18 +1,20 @@
-import React from 'react'
+import React, { Suspense, lazy } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
-import MainPage from '../pages/MainPage'
-import CrudPage from '../pages/CrudPage'
-import D3 from '../pages/D3'
+const MainPage = lazy(() => import('../pages/MainPage'))
+const D3 = lazy(() => import('../pages/D3'))
+const CrudPage = lazy(() => import('../pages/CrudPage'))
 
 const Routes = () => {
   return (
     <Router>
-      <Switch>
-        <Route component={MainPage} exact path="/" />
-        <Route component={CrudPage} exact path="/Crud" />
-        <Route component={D3} exact path="/d3" />
-      </Switch>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Switch>
+          <Route component={MainPage} exact path="/" />
+          <Route component={CrudPage} exact path="/Crud" />
+          <Route component={D3} exact path="/d3" />
+        </Switch>
+      </Suspense>
     </Router>
   )
 }
