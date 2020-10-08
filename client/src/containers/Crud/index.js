@@ -91,8 +91,18 @@ const Crud = () => {
     <div>
       <h3>Create New Todo</h3>
       { isUpdateMode
-        ? <Form handleSubmit={handleUpdate} value={todoValue} name="updateTodo" handleChange={handleChange} />
-        : <Form handleSubmit={handleSubmit} value={todoValue} name="addTodo" handleChange={handleChange} />
+        ? <Form
+            handleSubmit={handleUpdate}
+            value={todoValue}
+            name="updateTodo"
+            handleChange={handleChange}
+          />
+        : <Form
+            handleSubmit={handleSubmit}
+            value={todoValue}
+            name="addTodo"
+            handleChange={handleChange}
+          />
       }
       <ul>
         {data.todos.map((todo) =>

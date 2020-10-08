@@ -20,7 +20,7 @@ const Notification = () => {
     setShowNotification(true)
     setTimeout(() => {
       setShowNotification(false)
-    }, 4500);
+    }, 5000);
   }
 
   if (error) return <p>error</p>

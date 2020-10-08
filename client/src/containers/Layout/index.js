@@ -49,6 +49,15 @@ const GlobalStyles = createGlobalStyle`
 
 const StyledNavbar = styled(Navbar)`
   display: flex;
+  list-style: none;
+
+  .navigation-list__item {
+    margin-right: 3rem;
+
+    a {
+      color: ${theme.white};
+    }
+  }
 `
 
 const Layout = ({ children }) => {
