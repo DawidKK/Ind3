@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const Button = styled.button`
+const ButtonStyles = styled.button`
   background: ${props => props.theme.accentColor};
   color: ${props => props.theme.black};
   cursor: pointer;
@@ -12,4 +12,4 @@ const Button = styled.button`
   width: ${props => (props.fullWidth ? '100%' : 'auto')};
 `
 
-export default Button
+export default ButtonStyles
