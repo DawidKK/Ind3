@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 
 import ButtonStyles from '../../assets/stylesheet/Button'
 
-export const Button = ({ label, fullWidth = false }) => {
+export const Button = ({ handleCLick, label, fullWidth = false }) => {
   return (
-    <ButtonStyles fullWidth={fullWidth}>
+    <ButtonStyles onClick={handleCLick} fullWidth={fullWidth}>
       {label}
     </ButtonStyles>
   )
@@ -14,6 +14,7 @@ export const Button = ({ label, fullWidth = false }) => {
 Button.propTypes = {
   fullWidth: PropTypes.bool,
   label: PropTypes.string,
+  handleCLick: PropTypes.func,
 }
 
 export default Button

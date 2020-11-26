@@ -3,7 +3,7 @@ import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
 
 import Navbar from './Navbar'
 
-const theme = {
+export const theme = {
   black: '#393939',
   grey: '#3a3a3a',
   white: '#ededed',

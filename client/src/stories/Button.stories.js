@@ -8,9 +8,9 @@ export default {
   parameters: {
     backgrounds: {
       values: [
-         { name: 'red', value: '#f00', },
-         { name: 'green', value: '#0f0', },
-         { name: 'blue', value: '#00f', },
+         { name: 'bgDark', value: '#151935' },
+         { name: 'bgLight', value: '#1b223e' },
+         { name: 'accentColor', value: '#ffe400' },
       ]
     }
   }

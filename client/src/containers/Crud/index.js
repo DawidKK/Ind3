@@ -49,6 +49,7 @@ const Crud = () => {
 
   const handleChange = e => {
     setTodoValue(e.target.value)
+    console.log(e)
   }
 
   const editTodo = e => {

@@ -1,12 +1,14 @@
 import React from 'react'
 
 import FormStyles from '../../assets/stylesheet/FormStyles'
+
 import Button from '../Button'
+import Field from '../Field'
 
 const Form = ({ handleSubmit, name, handleChange, value }) => {
   return (
     <FormStyles onSubmit={handleSubmit}>
-      <input name={name} onChange={handleChange} value={value} type="text" placeholder="Enter todo"></input>
+      <Field name={name} handleChange={handleChange} value={value} type="text" placeholder="Enter todo" />
       <Button label="submit" fullWidth/>
     </FormStyles>
   )
